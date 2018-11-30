@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebAudioService.Models.AudioWithUsername>
+
+<table class="table">
+    <tr>
+        <th>
+            Author
+        </th>
+        <th>
+            Play
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="/Users/Details/@item.UserId">@Html.DisplayFor(modelItem => item.Username)</a>
+        </td>
+        <td>
+            <audio controls>
+                <source src=@("http://localhost:55906/Audio/Details/" + item.Id.ToString()) type=@item.ContentType>
+            </audio>
+        </td>
+        <td>
+            @if (WebAudioService.Services.UserRoleService.UserHasRole(HttpContext.Current.User.Identity.Name, "Admin") |
+                WebAudioService.Services.UserAudioService.UserHasAudio(HttpContext.Current.User.Identity.Name,item.Id))
+            { @Html.ActionLink("Delete", $"Delete/{item.Id}", "Audio") }
+
+
+        </td>
+    </tr>
+}
+
+</table>

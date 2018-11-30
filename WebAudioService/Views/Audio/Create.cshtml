@@ -1,0 +1,21 @@
+﻿@model WebAudioService.Entities.Audio
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h4>Load</h4>
+@using (Html.BeginForm("Create", "Audio", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <input class="btn btn-block" type="file" accept="auido/*" name="upload" /><br>
+    <input class="btn btn-block" type="submit" value="Загрузить" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

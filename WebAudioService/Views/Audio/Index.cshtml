@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebAudioService.Models.AudioWithUsername>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>All tracks:</h2>
+<p>
+    @Html.ActionLink("Upload", "Create")
+</p>
+
+@Html.Partial("AudioList")
+
+
+
